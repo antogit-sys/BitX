@@ -18,4 +18,37 @@
 #   define LSHIFT_POS(a, b) ((a) << (n))
 #   define RSHIFT_POS(a, b) ((a) >> (n)) 
 
+typedef uint8_t Byte_t;
+typedef union{
+    struct{
+        Byte_t oct1;
+        Byte_t oct2;
+    };
+    uint16_t base;
+}word16_t;
+
+typedef union{
+    struct{
+        Byte_t oct1;
+        Byte_t oct2;
+        Byte_t oct3;
+        Byte_t oct4;
+    };
+    uint32_t base;
+}word32_t;
+
+typedef union{
+    struct{
+        Byte_t oct1;
+        Byte_t oct2;
+        Byte_t oct3;
+        Byte_t oct4;
+        Byte_t oct5;
+        Byte_t oct6;
+        Byte_t oct7;
+        Byte_t oct8;
+    };
+    uint64_t base;
+}word64_t;
+
 #endif
