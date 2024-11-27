@@ -51,4 +51,9 @@ typedef union{
     uint64_t base;
 }word64_t;
 
+typedef word16_t word;
+typedef word32_t dword;
+typedef word64_t qword;
+
+
 #endif
