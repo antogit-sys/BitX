@@ -2,7 +2,7 @@
 #   define __BITX_H
 #   include <stdint.h>
 
-/* bit wise operator */
+/* macro bit wise operator */
 #   define AND(a, b)   ((a) & (b))
 #   define OR(a, b)    ((a) | (b))
 #   define NOT(a)      (~(a))
@@ -10,13 +10,23 @@
 #   define LSHIFT(a)   ((a) << 1)
 #   define RSHIFT(a)   ((a) >> 1)
 
-/* subsection bit wise operator */
+/* macro subsection bit wise operator */
 #   define NAND(a, b)       (NOT(AND(a, b))
 #   define NOR(a, b)        (NOT(OR(a, b))
 #   define XNOR(a, b)       (NOT(XOR(a, b))
 #   define EXNOR(a, b)      (XNOR(a, b))
 #   define LSHIFT_POS(a, b) ((a) << (n))
 #   define RSHIFT_POS(a, b) ((a) >> (n)) 
+
+
+/* Generic Macro Utility */
+#   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\
+        "Big Endian":"Little Endian")
+
+typedef enum{
+    BIG_ENDIAN,
+    LITTLE_ENDIAN
+}endian_t;
 
 typedef uint8_t Byte_t;
 typedef union{
@@ -55,5 +65,7 @@ typedef word16_t word;
 typedef word32_t dword;
 typedef word64_t qword;
 
+/* Functions Utility */
+endian_t getEndian(void);
 
 #endif
