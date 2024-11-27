@@ -22,10 +22,11 @@
 /* Generic Macro Utility */
 #   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\
         "Big Endian":"Little Endian")
+#   define INIT_SEQ(value) {.base = value}
 
 typedef enum{
-    BIG_ENDIAN,
-    LITTLE_ENDIAN
+    BIG_ENDIAN,     // = 0
+    LITTLE_ENDIAN   // = 1
 }endian_t;
 
 typedef uint8_t Byte_t;
