@@ -1,6 +1,8 @@
 #ifndef __BITX_H
 #   define __BITX_H
 #   include <stdint.h>
+#   include <stdbool.h>
+#   include <stdlib.h>
 
 /* macro bit wise operator */
 #   define AND(a, b)   ((a) & (b))
@@ -11,13 +13,17 @@
 #   define RSHIFT(a)   ((a) >> 1)
 
 /* macro subsection bit wise operator */
-#   define NAND(a, b)       (NOT(AND(a, b))
-#   define NOR(a, b)        (NOT(OR(a, b))
-#   define XNOR(a, b)       (NOT(XOR(a, b))
+#   define NAND(a, b)       (NOT(AND(a, b)))
+#   define NOR(a, b)        (NOT(OR(a, b)))
+#   define XNOR(a, b)       (NOT(XOR(a, b)))
 #   define EXNOR(a, b)      (XNOR(a, b))
 #   define LSHIFT_POS(a, b) ((a) << (n))
 #   define RSHIFT_POS(a, b) ((a) >> (n)) 
 
+/* simple macro type */
+#   define CWORD ComplexWORD
+#   define CDWORD CompleDWORD
+#   define CQWORD ComplexQWORD
 
 /* Generic Macro Utility */
 #   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\
@@ -29,14 +35,25 @@ typedef enum{
     LITTLE_ENDIAN   // = 1
 }endian_t;
 
+/* defined simple type */
 typedef uint8_t Byte_t;
+typedef uint16_t word;
+typedef uint32_t dword;
+typedef uint64_t qword;
+// define subsection simple type
+typedef uint16_t word16_t;
+typedef uint32_t word32_t;
+typedef uint64_t word64_t;
+
+
+/* defined complex type */
 typedef union{
     struct{
         Byte_t oct1;
         Byte_t oct2;
     };
-    uint16_t base;
-}word16_t;
+    word base;
+}ComplexWORD;
 
 typedef union{
     struct{
@@ -45,8 +62,8 @@ typedef union{
         Byte_t oct3;
         Byte_t oct4;
     };
-    uint32_t base;
-}word32_t;
+    dword base;
+}ComplexDWORD;
 
 typedef union{
     struct{
@@ -59,14 +76,11 @@ typedef union{
         Byte_t oct7;
         Byte_t oct8;
     };
-    uint64_t base;
-}word64_t;
-
-typedef word16_t word;
-typedef word32_t dword;
-typedef word64_t qword;
+    qword base;
+}ComplexQWORD;
 
 /* Functions Utility */
 endian_t getEndian(void);
+void* multiplexer(const void*, size_t, size_t, size_t);
 
 #endif
