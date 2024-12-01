@@ -20,10 +20,14 @@
 #   define LSHIFT_POS(a, b) ((a) << (n))
 #   define RSHIFT_POS(a, b) ((a) >> (n)) 
 
+
 /* simple macro type */
 #   define CWORD ComplexWORD
 #   define CDWORD ComplexDWORD
 #   define CQWORD ComplexQWORD
+
+/* MUX & DEMUX macro*/
+#   define MUX(arr, sel, dim, ds)    (multiplexer(arr, sel, dim, sizeof(ds)))
 
 /* Generic Macro Utility */
 #   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\

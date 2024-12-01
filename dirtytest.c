@@ -16,7 +16,7 @@ int main()
     scanf("%d",&sel);
 
     word* output = (word*)multiplexer(in, sel, dim, sizeof(word));
-    ComplexWORD* cout = multiplexer(in, sel, dim, sizeof(ComplexWORD));
+    ComplexWORD* cout = MUX(in, sel, dim, ComplexWORD);
 
     if (output==NULL && cout == NULL){
         printf("errore, qualcosa e' andato storto!\n");
