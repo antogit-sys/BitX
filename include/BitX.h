@@ -22,7 +22,7 @@
 
 /* simple macro type */
 #   define CWORD ComplexWORD
-#   define CDWORD CompleDWORD
+#   define CDWORD ComplexDWORD
 #   define CQWORD ComplexQWORD
 
 /* Generic Macro Utility */
