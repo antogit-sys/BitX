@@ -26,4 +26,15 @@ int main()
     printf("out: 0x%04X\n", *output);
     printf("out complex: 0x%04X\n",cout->base);
 
+    word b = 0xFFFF;   // Un byte da copiare
+    word arr[5] = { 0x0000, 0x0000, 0x0000, 0x0000, 0x0000 };  // Array di Byte_t
+
+    // Chiamata al demultiplexesel,sel,  r
+    bool result = demultiplexer(&b, arr, sel, 5, sizeof(word));
+
+    if (result) {
+        printf("Dato copiato in arr[%zu]: 0x%04X\n", sel, arr[sel]);
+    } else {
+        printf("Errore nel demux!\n");
+    }
 }

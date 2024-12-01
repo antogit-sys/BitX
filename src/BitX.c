@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../include/BitX.h"
 
 endian_t getEndian(void){
@@ -16,6 +17,21 @@ void* multiplexer(const void* arr, size_t sel, size_t dim, size_t data_size){
 
     if(sel < dim)
         done = (void*)arr + sel*data_size; //arr + offset
+
+    return done;
+}
+
+bool demultiplexer(void* in, void* arr, size_t sel, size_t dim, size_t data_size){
+    bool done = false;
+
+    if(sel < dim){
+        //arr[sel+offset]
+        Byte_t* destination = (Byte_t*)arr + sel * data_size;
+        
+        // Copia i dati da 'in' a 'arr[sel]'
+        memcpy(destination, in, data_size);
+        done = true;
+    }
 
     return done;
 }

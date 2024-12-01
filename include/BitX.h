@@ -27,7 +27,8 @@
 #   define CQWORD ComplexQWORD
 
 /* MUX & DEMUX macro*/
-#   define MUX(arr, sel, dim, ds)    (multiplexer(arr, sel, dim, sizeof(ds)))
+#   define MUX(arr, sel, dim, ds)       (multiplexer(arr, sel, dim, sizeof(ds)))
+#   define DEMUX(in, arr, sel, dim, ds) (demultiplexer(in, arr, sel, dim, sizeof(ds)))
 
 /* Generic Macro Utility */
 #   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\
@@ -86,5 +87,6 @@ typedef union{
 /* Functions Utility */
 endian_t getEndian(void);
 void* multiplexer(const void*, size_t, size_t, size_t);
+bool demultiplexer(void*, void*, size_t, size_t, size_t);
 
 #endif
