@@ -17,8 +17,8 @@
 #   define NOR(a, b)        (NOT(OR(a, b)))
 #   define XNOR(a, b)       (NOT(XOR(a, b)))
 #   define EXNOR(a, b)      (XNOR(a, b))
-#   define LSHIFT_POS(a, b) ((a) << (n))
-#   define RSHIFT_POS(a, b) ((a) >> (n)) 
+#   define LSHIFT_POS(a, n) ((a) << (n))
+#   define RSHIFT_POS(a, n) ((a) >> (n)) 
 
 
 /* simple macro type */
@@ -33,7 +33,14 @@
 /* Generic Macro Utility */
 #   define GETENDIAN() ((getEndian() == BIG_ENDIAN)?\
         "Big Endian":"Little Endian")
-#   define INIT_SEQ(value) {.base = value}
+#   define INIT_SEQ(value)      {.base = value}
+#   define BITCOUNT(type)       (sizeof(type)*8)
+#   define BITLEN(type)         (BITCOUNT(type))
+#   define BIT_POS(value, pos)  (AND(RSHIFT_POS(value, pos), 1)) //((value>>pos)&1)
+#   define PRINTB(v, type) \
+        for(size_t i=BITLEN(type); i-->0;) \
+            printf("%d",BIT_POS(v, i)); \
+        fflush(stdout);
 
 typedef enum{
     BIG_ENDIAN,     // = 0

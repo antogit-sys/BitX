@@ -35,3 +35,4 @@ bool demultiplexer(void* in, void* arr, size_t sel, size_t dim, size_t data_size
 
     return done;
 }
+
